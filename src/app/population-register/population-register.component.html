@@ -1,0 +1,61 @@
+<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" #f="ngForm">
+
+  <br>
+  <br>
+
+
+
+
+  <input type="input" id="fullName" class="form-control mb-4" placeholder="Full Name" ngModel name="fullName" #fullName="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!fullName.valid && fullName.touched"> Please Enter A Valid Name</span>
+    <br>
+
+    <input type="number" id="censusNumber" class="form-control mb-4" placeholder=" Census House Number" ngModel name="censusHouseNumberId" #censusHouseNumberId="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!censusHouseNumberId.valid && censusHouseNumberId.touched"> Please Enter A Valid Census Number Id</span>
+    <br>
+
+
+    <input type="text" id="relationshipToHead" class="form-control mb-4" placeholder=" RelationShip To Head" ngModel name="relationToHead" #relationshipToHead="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!relationshipToHead.valid && relationshipToHead.touched"> Please Enter A Valid Relationship To Head</span>
+    <br>
+ 
+
+<input type="text" id="gender" class="form-control mb-4" placeholder="Gender" ngModel name="gender" #gender="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!gender.valid && gender.touched"> Please Enter A Valid Gender</span>
+    <br>
+
+    <input type="text" id="dateOfBirth" class="form-control mb-4" placeholder="Date Of Birth" ngModel name="dateOfBirth" #dateOfBirth="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!dateOfBirth.valid && dateOfBirth.touched"> Please Enter A Valid Date Of Birth</span>
+    <br>
+
+    <input type="text" id="maritialStatus" class="form-control mb-4" placeholder="Maritial Status " ngModel name="maritalStatus" #maritialStatus="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!maritialStatus.valid && maritialStatus.touched"> Please Enter A Valid Maritial Status </span>
+    <br>
+
+  <input type="number" id="ageAtMarriage" class="form-control mb-4" placeholder="Age At Marriage" ngModel name="ageAtMarriage" #ageAtMarriage="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!ageAtMarriage.valid && ageAtMarriage.touched"> Please Enter A Valid Relationship To Head</span>
+    <br>
+
+  <input type="text" id="occupationStatus" class="form-control mb-4" placeholder="Occupation Status" ngModel name="occupation" #occupationStatus="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!occupationStatus.valid && occupationStatus.touched"> Please Enter A Valid Occupation Status</span>
+    <br> 
+
+    <input type="text" id="occupationIndustry" class="form-control mb-4" placeholder="Occupation Industry" ngModel name="natureOfOccupation" #occupationIndustry="ngModel"
+   required>
+  <span class="help-block"   *ngIf="!occupationIndustry.valid && occupationIndustry.touched"> Please Enter A Valid Occupation Industry</span>
+    <br>
+
+    
+                <!-- Sign in button -->
+                <button mdbBtn color="info" class="btn btn-button-success" block="true" type="submit" [disabled]="!f.valid">Submit</button>
+
+
+</form>
