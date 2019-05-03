@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h1 *ngIf="requests.length!==0">Declined Requests</h1>
+    <h1 *ngIf="requests.length==0">List Empty</h1>
+  </div>
+</div>
+
+<div class="col-4">
+  <pagination-controls (pageChange)="page= $event"></pagination-controls>
+  </div> 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3" style=" margin-bottom: 28px ;" *ngFor="let status of requests| paginate: { itemsPerPage: 4, currentPage: page }">
+      <div class="card text-center" style=" box-shadow: 1px 1px 3px #888; border: 1px solid gray;">
+        <div class="center">
+        </div>
+        <div class="card-body">
+
+          <img class="card-title"
+            src="data:image/jpeg;base64,{{status.image}}"
+            alt="not found" style="width: 100px;height: 100px;">
+          <p class="card-text" style="color:black;"><b>Name:{{status.fullName}}</b></p>
+          
+          <p class="card-text" style="color:black;"><b>{{status.email}}</b></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+
+
+<form class="text-center border border-light p-5" (ngSubmit)="OnSubmit()" #f="ngForm">
+
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Appartment Number</span>
+    </div>
+    <input type="text" id="apartmentNumber" class="form-control " placeholder="Apartment Number" ngModel
+      name="apartmentNumber" required #apartmentNumber="ngModel">
+    <span class="help-block" *ngIf="!apartmentNumber.valid && apartmentNumber.touched"> <br>
+      <div *ngIf="apartmentNumber.errors['required']"> Required </div>
+      <div *ngIf="apartmentNumber.errors['apartmentNumber']"> Invalid </div>
+    </span> <br>
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Street Number</span>
+    </div>
+    <input type="text" id="streetNumber" class="form-control " placeholder="Street Number" ngModel name="streetNumber"
+      required #streetNumber="ngModel">
+    <span class="help-block" *ngIf="!streetNumber.valid && streetNumber.touched"> <br>
+      <div *ngIf="streetNumber.errors['required']"> Required </div>
+      <div *ngIf="streetNumber.errors['streetNumber']"> Invalid </div>
+    </span> <br>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">City</span>
+    </div>
+    <input type="text" id="city" class="form-control " placeholder="City" ngModel name="city" required #city="ngModel">
+    <span class="help-block" *ngIf="!city.valid && city.touched"> <br>
+      <div *ngIf="city.errors['required']"> Required </div>
+      <div *ngIf="city.errors['city']"> Invalid </div>
+    </span> <br>
+  </div>
+
+  <!-- <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">State</span>
+    </div>
+    <input type="text" id="state" class="form-control " placeholder="State" ngModel name="state" required
+      #state="ngModel">
+    <span class="help-block" *ngIf="!state.valid && state.touched"> <br>
+      <div *ngIf="state.errors['required']"> Required </div>
+      <div *ngIf="state.errors['state']"> Invalid </div>
+    </span> <br>
+  </div> -->
+
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">State</span>
+    </div>
+<select class="form-control" id="State" name="State" #State="ngModel"
+required [(ngModel)]="state">
+<option *ngFor="let state of StateArray" [value]="state">{{state}}</option>
+</select>  
+   </div>
+   <span class="help-block" *ngIf="!State.valid && State.touched"> <br>
+    <div *ngIf="State.errors['required']"> Required </div>
+    <div *ngIf="State.errors['state']"> Invalid </div>
+  </span>
+
+
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">OwnerShip Status</span>
+    </div>
+    <!-- <input type="text" id="ownershipStatus" class="form-control mb-4" placeholder="Ownership Status Of The House" ngModel  name="ownershipStatus" required  #ownershipStatus="ngModel" > -->
+
+    <select class="form-control" name="ownerShipStatus" required [(ngModel)]="ownershipStatusDefaultValue"
+      #ownerShipStatus="ngModel">
+      <option *ngFor="let status of ownershipStatus"> {{status}}</option>
+    </select>
+  </div>
+  <span class="help-block" *ngIf="!ownerShipStatus.valid && ownerShipStatus.touched"> <br>
+    <div *ngIf="ownerShipStatus.errors['required']"> Required </div>
+    <div *ngIf="ownerShipStatus.errors['ownerShipStatus']"> Invalid </div>
+  </span>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Full Name Of Head</span>
+    </div>
+    <input type="text" id="fullNameOfHead" class="form-control " placeholder="Full Name Of Head" ngModel name="HeadName"
+      required #fullNameOfHead="ngModel">
+    <span class="help-block" *ngIf="!fullNameOfHead.valid && fullNameOfHead.touched"> <br>
+      <div *ngIf="fullNameOfHead.errors['required']"> Required </div>
+      <div *ngIf="fullNameOfHead.errors['fullNameOfHead']"> Invalid </div>
+    </span> <br>
+  </div>
+
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Number Of Rooms</span>
+    </div>
+    <input type="number" id="numberOfRooms" class="form-control " placeholder="Number Of Rooms" ngModel
+      name="numberOfRooms" (change)="ValidateRoom(numberOfRooms.value)" required #numberOfRooms="ngModel">
+      <span class="help-block" *ngIf="roomValidityError && numberOfRooms.touched" >Rooms cannnot be negative or zero</span>
+      <span class="help-block"   *ngIf="!numberOfRooms.valid && numberOfRooms.touched">Required</span>
+      <br>
+  </div>
+
+
+
+  <button mdbBtn color="info" class="btn btn-success" block="true" type="submit" [disabled]="!f.valid">Submit</button>
+
+
+</form>

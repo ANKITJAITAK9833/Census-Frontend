@@ -1,13 +1,12 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {SignUp} from '../sign-up';
+import {SignUp} from '../models/sign-up';
 @Injectable()
 export class SignUpService {
 
   constructor(private http: HttpClient) { }
 
-  postUser(model:SignUp)
-  { 
-    return this.http.post("http://localhost:57762/api/User",model)
+  PostUser(user: SignUp , image: string , name: string) {
+    return this.http.post('http://localhost:57762/api/User', { user , image , name});
   }
 }

@@ -1,0 +1,119 @@
+
+  <form class="text-center border border-light p-5" (ngSubmit)="OnSubmit()" #f="ngForm">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Full Name</span>
+      </div>
+      <input type="input" id="fullName" class="form-control " placeholder="Full Name" ngModel name="fullName"
+        #fullName="ngModel" required>
+      <span class="help-block"   *ngIf="!fullName.valid && fullName.touched"> Required</span>
+      <br>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Census House Number</span>
+      </div>
+      <input type="number" id="censusNumber" class="form-control" placeholder=" Census House Number" ngModel
+        name="censusHouseNumberId" #censusHouseNumberId="ngModel" required CensusIdCheck>
+      <div *ngIf="censusHouseNumberId.errors">
+        <span class="help-block" *ngIf="!censusHouseNumberId.valid && censusHouseNumberId.touched"> <br>
+          <div *ngIf="censusHouseNumberId.errors['required']"> Required </div>
+          <div *ngIf="censusHouseNumberId.errors['CensusIdCheck']">Census Id Does Not Exists</div>
+        </span>
+      </div>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Relationship To Head</span>
+      </div>
+      <select class="form-control" name="relationToHead" required [(ngModel)]="relationshipToHeadDefaultValue" #relationToHead="ngModel">
+        <option *ngFor="let relation of relationShipToHeadType"> {{relation}}</option>
+      </select>
+      <span class="help-block"   *ngIf="!relationToHead.valid && relationToHead.touched"> Required</span>
+      <br>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Gender</span>
+      </div>
+      <select class="form-control" name="gender" required [(ngModel)]="genderDefaultValue" #gender="ngModel">
+        <option *ngFor="let genders of genderType"> {{genders}}</option>
+      </select>
+      <span class="help-block"   *ngIf="!gender.valid && gender.touched"> Required</span>
+      <br>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+      </div>
+      <input type="date" id="dateOfBirth" (change)="ValidateDateOfBirth(dateOfBirth.value)" class="form-control" placeholder="Date Of Birth" ngModel name="dateOfBirth"
+        #dateOfBirth="ngModel" required>
+        <span class="help-block" *ngIf="checkDate && dateOfBirth.touched" >Date Of Birth Should Not Be Greater Than Today!</span>
+      <span class="help-block"   *ngIf="!dateOfBirth.valid && dateOfBirth.touched">Required</span>
+      <br>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Marital Status</span>
+      </div>
+      <select class="form-control" name="maritalStatus" required [(ngModel)]="maritalStatusDefaultValue"
+        #maritalStatus="ngModel">
+        <option *ngFor="let status of maritalStatusType"> {{status}}</option>
+      </select>
+      <span class="help-block"   *ngIf="!maritalStatus.valid && maritalStatus.touched"> Required </span>
+      <br>
+    </div>
+
+    <div class="input-group mb-3"
+      *ngIf="f.value.maritalStatus==='Married' ||f.value.maritalStatus==='Divorcee'  ">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Age At Marriage</span>
+      </div>
+      <input type="number" (change)="ValidateAgeAtMarriage(ageAtMarriage.value)" id="ageAtMarriage" class="form-control" placeholder="Age At Marriage" ngModel
+        name="ageAtMarriage" #ageAtMarriage="ngModel" required>
+        <span class="help-block" *ngIf="ageValidityError && ageAtMarriage.touched" >Age At Married cannnot be negative or zero</span>
+
+      <span class="help-block"   *ngIf="!ageAtMarriage.valid && ageAtMarriage.touched">Required</span>
+      <br>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Occupation Status </span>
+      </div>
+      <select class="form-control" name="occupation" required [(ngModel)]="occupationStatusDefaultValue"
+        #occupation="ngModel">
+        <option *ngFor="let status of occupationStatusType"> {{status}}</option>
+      </select>
+      <span class="help-block"   *ngIf="!occupation.valid && occupation.touched"> Required</span>
+      <br>
+    </div>
+
+
+    <div class="input-group mb-3" *ngIf="f.value.occupation!=='Student'   ">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Nature Of Occupation Status</span>
+      </div>
+      <select class="form-control" name="natureOfOccupation" required [(ngModel)]="natureOfOccupationDefaultValue"
+        #natureOfOccupation="ngModel">
+        <option *ngFor="let occupation of natureOfOccupationType"> {{occupation}}</option>
+      </select>
+      <span class="help-block"   *ngIf="!natureOfOccupation.valid && natureOfOccupation.touched">
+        Required</span>
+      <br>
+    </div>
+
+    <button mdbBtn color="info" class="btn btn-success" block="true" type="submit" [disabled]="!f.valid">Submit</button>
+
+
+  </form>

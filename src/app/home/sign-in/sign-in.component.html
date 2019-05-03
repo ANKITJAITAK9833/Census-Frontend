@@ -1,0 +1,232 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Census Data</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='' routerLinkActive="active-link"> Login<span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/signin" routerLinkActive="active-link">Sign Up</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav> -->
+<!-- 
+<div  style="text-align:center">
+<form class="text-center border border-light p-5" (ngSubmit)="OnSubmit()" #f="ngForm">
+    
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Email</span>
+    </div>
+    <input type="email" id="emailId" class="form-control" placeholder="E-mail" ngModel name="emailId" required
+      appUniqueEmail #email="ngModel" email>
+    <div *ngIf="email.errors">
+      <span class="help-block" *ngIf="!email.valid && email.touched">Invalid <br>
+        <span class="help-block" *ngIf="email.errors['required']"> Required </span>
+        <span class="help-block" *ngIf="email.errors['UniqueEmail']" > Email already exists</span>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Password</span>
+    </div>
+    <input type="password" id="password" class="form-control" placeholder="Password" ngModel name="password"
+      #password="ngModel" [pattern]="passwordPattern" required>
+    <span class="help-block"   *ngIf="!password.valid && password.touched">
+      <p *ngIf="password.errors.required">Required</p>
+      <p *ngIf="password.errors.pattern"> Password minimum length is 8 and it must have at-least 1 special character, 1
+        number and 1 alphabet. </p>
+    </span>
+    <br>
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">First Name</span>
+    </div>
+    <input type="text" id="firstName" class="form-control" placeholder="First Name" ngModel name="firstName"
+      [pattern]="firstNameLastNamePattern" #firstName="ngModel" required>
+    <span class="help-block"   *ngIf="!firstName.valid && firstName.touched">
+      <p *ngIf="firstName.errors.required"> Required</p>
+      <p *ngIf="firstName.errors.pattern"> Should Contain Alphabets and spaces only</p>
+    </span>
+    <br>
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Last Name</span>
+    </div>
+    <input type="text" id="lastName" class="form-control " placeholder="Last Name" ngModel name="lastName"
+      [pattern]="firstNameLastNamePattern" required #lastName=ngModel>
+    <span class="help-block"   *ngIf="!lastName.valid && lastName.touched">
+      <p *ngIf="lastName.errors.required">Required</p>
+      <p *ngIf="lastName.errors.pattern"> Should Contain Alphabets and spaces only</p>
+    </span>
+    <br>
+  </div>
+ 
+
+
+ <div class="input-group mb-3">
+    <div class="input-group-prepend"> 
+      
+      <span class="input-group-text"  id="basic-addon1">Profile Image</span>
+    </div>
+      <input type="file" id="image" class="form-control"
+      accept="image/*"
+      #image
+      (change)="OnImageUpload($event)"
+      placeholder="Profile Image"
+      style="display:inline"
+      required >
+      
+      <div class="col" style="display:inline" > 
+      <img *ngIf = "!display" src={{imageUrl}} style="width:38px;height:38px">
+      <img *ngIf="display" src={{base64textString}} style="width:38px;height:38px;display: inline">
+      
+    </div> 
+ </div>
+ 
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Aadhar Number</span>
+    </div>
+    <input type="number" id="aadharNumber" class="form-control " placeholder="Aadhar Number" ngModel name="aadharNumber"
+      [pattern]="aadharPattern"  required appUniqueAadharNumber #aadharNumber="ngModel"> <br>
+    <div *ngIf="aadharNumber.errors">
+      <span class="help-block" *ngIf="!aadharNumber.valid && aadharNumber.touched"> <br>
+        <div *ngIf="aadharNumber.errors['required']"> Required </div>
+        <div *ngIf="aadharNumber.errors.pattern"> Aadhar number should be a 12-digit number </div>
+        <div *ngIf="aadharNumber.errors['appUniqueAadharNumber']"> Aadhar Number already exists</div>
+      </span>
+    </div>
+  </div>
+
+  <button mdbBtn color="info" class="btn btn-success" block="true" type="submit" [disabled]="!f.valid">Sign in</button>
+  
+</form>
+
+</div> -->
+
+
+<div class="main">
+
+  <!-- Sign up form -->
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+        <div class="signup-form">
+          <h2 class="form-title">Sign up</h2>
+
+          <form  (ngSubmit)="OnSubmit()" #f="ngForm">
+
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope-open-text"></i></label>
+              <input type="email"  name="emailId" appUniqueEmail #email="ngModel" ngModel  email id="email" required placeholder="Your Email" />
+            </div>
+            
+                <span class="help-block" *ngIf="!email.valid && email.touched">
+                  <p *ngIf="email.errors['required']"> Required </p>
+                  <p *ngIf="email.errors.email">Invalid Email</p>
+                  <p *ngIf="email.errors['UniqueEmail']" > Email already exists</p>
+                </span>
+              
+
+
+            <div class="form-group">
+              <label for="pass"><i class="fas fa-key"></i></label>
+              <input type="password" ngModel #password="ngModel" [pattern]="passwordPattern" required name="password" id="password" placeholder="Password" />
+            </div>
+            <span class="help-block"   *ngIf="!password.valid && password.touched">
+                <p *ngIf="password.errors.required">Required</p>
+                <p *ngIf="password.errors.pattern"> Password minimum length is 8 and it must have at-least 1 special character, 1
+                  number and 1 alphabet. </p>
+            </span>
+
+
+            
+            <div class="form-group">
+              <label for="firstName"><i class="fas fa-file-signature"></i></label>
+              <input type="text" name="firstName" id="firstName" ngModel placeholder="First Name"
+              [pattern]="firstNameLastNamePattern" #firstName="ngModel" required />
+            </div>
+            <span class="help-block"   *ngIf="!firstName.valid && firstName.touched">
+                <p *ngIf="firstName.errors.required"> Required</p>
+                <p *ngIf="firstName.errors.pattern"> Should Contain Alphabets and spaces only</p>
+              </span>
+
+
+
+
+
+            <div class="form-group">
+              <label for="lastName"> <i class="fas fa-file-signature"></i></label>
+              <input type="text" name="lastName" ngModel id="lastName" required #lastName="ngModel" [pattern]="firstNameLastNamePattern" placeholder="Last Name" />
+            </div> 
+            <span class="help-block"   *ngIf="!lastName.valid && lastName.touched">
+                <p *ngIf="lastName.errors.required">Required</p>
+                <p *ngIf="lastName.errors.pattern"> Should Contain Alphabets and spaces only</p>
+              </span>
+
+
+
+
+            <div class="form-group">
+              <label for="image"><i class="fas fa-camera-retro"></i> </label>
+              <input type="file" id="image" accept="image/*" #image
+                (change)="OnImageUpload($event)" placeholder="Profile Image"  required>
+
+              <div class="col" style="display:inline" > 
+                <img *ngIf = "!display" src={{imageUrl}} style="width:38px;height:38px">
+                <img *ngIf="display" src={{base64textString}} style="width:38px;height:38px;display: inline">
+              </div>
+            </div>
+
+
+
+              <div class="form-group">
+                <label for="aadharNumber"><i class="fas fa-sort-numeric-up"></i></label>
+                <input type="number" [pattern]="aadharPattern"  required ngModel appUniqueAadharNumber #aadharNumber="ngModel" name="aadharNumber" id="aadharNumber"  placeholder="Aadhar Number" />
+              </div>
+              <div *ngIf="aadharNumber.errors">
+                  <span class="help-block" *ngIf="!aadharNumber.valid && aadharNumber.touched"> <br>
+                    <div *ngIf="aadharNumber.errors['required']"> Required </div>
+                    <div *ngIf="aadharNumber.errors.pattern"> Aadhar number should be a 12-digit number </div>
+                    <div *ngIf="aadharNumber.errors['appUniqueAadharNumber']"> Aadhar Number already exists</div>
+                  </span>
+                </div>
+
+
+              
+               <button mdbBtn color="info" class="btn btn-success" block="true" type="submit" [disabled]="!f.valid">Sign in<i class="fas fa-sign-in-alt"></i></button>
+
+              <!-- <div class="form-group form-button">
+                <button name="signup" id="signup" class="form-submit" value="Register">Sign Up</button>
+              </div> -->
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure><img [src]="imageSrc" alt="sing up image"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
